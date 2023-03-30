@@ -12,17 +12,21 @@ import java.util.List;
 public class App {
     public static void main(String[] args) {
 
-        for (City city : getCities()) {
-            System.out.println(city);
+//        for (City city : getCities()) {
+//            System.out.println(city);
+//
+//        }
+//        for (Country country : getCountries()) {
+//            System.out.println(country);
+//        }
+//
+//        for (Mayor mayor : getMayors()) {
+//            System.out.println(mayor);
+//
+//        }
 
-        }
-        for (Country country : getCountries()) {
-            System.out.println(country);
-        }
+        printCity(2);
 
-        for (Mayor mayor : getMayors()) {
-            System.out.println(mayor);
-        }
     }
 
     public static void creatTable() {
@@ -192,4 +196,28 @@ public class App {
         }
         return mayors;
     }
+
+    public static void printCity(int id) {
+        String SQL = "SELECT * FROM cities WHERE id=?";
+        try (Connection conn = DB.connection();
+             PreparedStatement stmt = conn.prepareStatement(SQL)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+
+            rs.next();
+            System.out.println(
+                    rs.getInt("id") + " " +
+                            rs.getString("name") + " " +
+                            rs.getDate("founded") + " " +
+                            rs.getDouble("total_area") + " " +
+                            rs.getString("mayorofthecity"));
+            rs.next();
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
 }
+
+
