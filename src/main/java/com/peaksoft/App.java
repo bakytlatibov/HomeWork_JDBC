@@ -59,7 +59,6 @@ public class App {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void createCounty() {
@@ -103,11 +102,9 @@ public class App {
              Statement statement = connection.createStatement()) {
             statement.executeUpdate(SQL);
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public static void addMayor(String first_name, String last_name, int age, String mayorOfTheCity) {
@@ -124,8 +121,6 @@ public class App {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public static List<City> getCities() {
@@ -144,7 +139,6 @@ public class App {
                 city.setMayorOfTHeCity(resultSet.getString("mayorofthecity"));
                 cities.add(city);
             }
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -165,7 +159,6 @@ public class App {
                 country.setFounded(resultSet.getString("founded"));
                 country.setCapital(resultSet.getString("capital"));
                 countries.add(country);
-
 
             }
 
@@ -211,8 +204,6 @@ public class App {
                             rs.getDate("founded") + " " +
                             rs.getDouble("total_area") + " " +
                             rs.getString("mayorofthecity"));
-            rs.next();
-
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
